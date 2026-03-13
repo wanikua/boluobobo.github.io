@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>boluobobo — AI 开源项目</title>
+  <meta name="description" content="boluobobo 的开源项目展示 — AI 朝廷、Become CEO、思维框架等">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍍</text></svg>">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0a;
+      --card: #141414;
+      --card-hover: #1a1a1a;
+      --border: #222;
+      --text: #e5e5e5;
+      --text-dim: #888;
+      --accent: #f59e0b;
+      --accent-dim: #b45309;
+      --star: #fbbf24;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      position: relative;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 2px;
+      background: var(--accent);
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-size: 2.4em;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .header h1 span { color: var(--accent); }
+    .header p {
+      color: var(--text-dim);
+      font-size: 1.1em;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .header-links {
+      margin-top: 20px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .header-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.95em;
+      padding: 6px 16px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+    .header-links a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Projects */
+    .section-title {
+      text-align: center;
+      padding: 60px 20px 30px;
+      font-size: 1.5em;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    .projects {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .project {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+    .project:hover {
+      background: var(--card-hover);
+      border-color: var(--accent-dim);
+      transform: translateY(-2px);
+    }
+    .project.featured {
+      border-color: var(--accent-dim);
+      background: linear-gradient(135deg, #1a1400 0%, var(--card) 100%);
+    }
+    .project.featured::before {
+      content: '🔥 FEATURED';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 0.7em;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .project-emoji { font-size: 1.6em; }
+    .project-name {
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+    .project-stars {
+      margin-left: auto;
+      color: var(--star);
+      font-size: 0.9em;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .project-desc {
+      color: var(--text-dim);
+      font-size: 0.95em;
+      margin-bottom: 12px;
+    }
+    .project-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      font-size: 0.75em;
+      padding: 3px 10px;
+      border-radius: 12px;
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-dim);
+      font-size: 0.85em;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+
+    /* Stats */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 30px 20px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 2em;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .stat-label {
+      font-size: 0.85em;
+      color: var(--text-dim);
+    }
+
+    @media (max-width: 600px) {
+      .header h1 { font-size: 1.8em; }
+      .projects { gap: 12px; }
+      .project { padding: 18px; }
+      .stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img class="avatar" src="https://github.com/wanikua.png" alt="boluobobo">
+    <h1>boluo<span>bobo</span></h1>
+    <p>用 AI 构建有趣的东西。开源爱好者。</p>
+    <div class="header-links">
+      <a href="https://github.com/wanikua" target="_blank">GitHub</a>
+      <a href="https://github.com/wanikua/boluobobo-ai-court-tutorial" target="_blank">⭐ Star 项目</a>
+    </div>
+  </div>
+
+  <div class="stats" id="stats">
+    <div class="stat">
+      <div class="stat-num" id="total-stars">—</div>
+      <div class="stat-label">Total Stars</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="total-repos">—</div>
+      <div class="stat-label">Projects</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="total-forks">—</div>
+      <div class="stat-label">Forks</div>
+    </div>
+  </div>
+
+  <div class="section-title">开源项目</div>
+
+  <div class="projects">
+    <a class="project featured" href="https://github.com/wanikua/boluobobo-ai-court-tutorial" target="_blank">
+      <div class="project-header">
+        <span class="project-emoji">🏛️</span>
+        <span class="project-name">AI 朝廷</span>
+        <span class="project-stars">⭐ <span class="star-count" data-repo="boluobobo-ai-court-tutorial">1485</span></span>
+      </div>
+      <div class="project-desc">以明朝三省六部制为蓝本，用 OpenClaw 框架构建的多 Agent 协作系统。一台服务器 + 一行命令 = AI 朝廷。</div>
+      <div class="project-tags">
+        <span class="tag">Multi-Agent</span>
+        <span class="tag">OpenClaw</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Docker</span>
+      </div>
+    </a>
+
+    <a class="project" href="https://github.com/wanikua/become-ceo" target="_blank">
+      <div class="project-header">
+        <span class="project-emoji">👔</span>
+        <span class="project-name">Become CEO</span>
+        <span class="project-stars">⭐ <span class="star-count" data-repo="become-ceo">28</span></span>
+      </div>
+      <div class="project-desc">Your AI executive team on Discord. 7 specialized agents — Engineering, Finance, Marketing, DevOps, Legal, Management, Chief of Staff.</div>
+      <div class="project-tags">
+        <span class="tag">AI Agents</span>
+        <span class="tag">Discord</span>
+        <span class="tag">Clawdbot</span>
+      </div>
+    </a>
+
+    <a class="project" href="https://github.com/wanikua/byebyeclaw" target="_blank">
+      <div class="project-header">
+        <span class="project-emoji">🧹</span>
+        <span class="project-name">ByeByeClaw</span>
+        <span class="project-stars">⭐ <span class="star-count" data-repo="byebyeclaw">22</span></span>
+      </div>
+      <div class="project-desc">一键卸载所有 Claw 家族 AI Agent，零残留。One command to uninstall ALL Claw-family AI agents.</div>
+      <div class="project-tags">
+        <span class="tag">Shell</span>
+        <span class="tag">Utility</span>
+      </div>
+    </a>
+
+    <a class="project" href="https://github.com/wanikua/ai-court-skill" target="_blank">
+      <div class="project-header">
+        <span class="project-emoji">🎭</span>
+        <span class="project-name">AI Court Skill</span>
+        <span class="project-stars">⭐ <span class="star-count" data-repo="ai-court-skill">4</span></span>
+      </div>
+      <div class="project-desc">Discord AI 多智能体团队（明朝六部制）Clawdbot skill 版。一键安装到已有 Clawdbot 实例。</div>
+      <div class="project-tags">
+        <span class="tag">Clawdbot Skill</span>
+        <span class="tag">Shell</span>
+      </div>
+    </a>
+
+    <a class="project" href="https://github.com/wanikua/thinking-skills" target="_blank">
+      <div class="project-header">
+        <span class="project-emoji">🧠</span>
+        <span class="project-name">Thinking Skills</span>
+        <span class="project-stars">⭐ <span class="star-count" data-repo="thinking-skills">1</span></span>
+      </div>
+      <div class="project-desc">20 human thinking frameworks as Claude Code custom commands — Critical Thinking, First Principles, Red Team, Bayesian, and more.</div>
+      <div class="project-tags">
+        <span class="tag">Claude Code</span>
+        <span class="tag">Thinking</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="footer">
+    <p>Built with ❤️ by <a href="https://github.com/wanikua">boluobobo</a> · 🍍</p>
+  </div>
+
+  <script>
+    // Fetch live star counts from GitHub API
+    async function updateStats() {
+      try {
+        const res = await fetch('https://api.github.com/users/wanikua/repos?per_page=100');
+        const repos = await res.json();
+        if (!Array.isArray(repos)) return;
+
+        const ownRepos = repos.filter(r => !r.fork);
+        const totalStars = ownRepos.reduce((s, r) => s + r.stargazers_count, 0);
+        const totalForks = ownRepos.reduce((s, r) => s + r.forks_count, 0);
+
+        document.getElementById('total-stars').textContent = totalStars.toLocaleString();
+        document.getElementById('total-repos').textContent = ownRepos.length;
+        document.getElementById('total-forks').textContent = totalForks.toLocaleString();
+
+        // Update individual star counts
+        document.querySelectorAll('.star-count').forEach(el => {
+          const repo = repos.find(r => r.name === el.dataset.repo);
+          if (repo) el.textContent = repo.stargazers_count.toLocaleString();
+        });
+      } catch (e) { /* silent fail */ }
+    }
+    updateStats();
+  </script>
+</body>
+</html>
