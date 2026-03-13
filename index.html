@@ -72,6 +72,11 @@
     .footer{font-size:.8em;color:var(--text);padding:40px 0;max-width:480px}
     .footer a{color:var(--heading);font-weight:500}
 
+    /* WeChat tooltip */
+    .wechat-link{position:relative}
+    .wechat-tip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border);color:var(--heading);font-size:.75em;padding:6px 12px;border-radius:6px;white-space:nowrap;pointer-events:none}
+    .wechat-link:hover .wechat-tip{display:block}
+
     /* Cursor glow effect */
     .glow{position:fixed;width:600px;height:600px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(94,234,212,0.07) 0%,transparent 70%);z-index:0;transition:transform .15s ease-out}
     .layout,.left,.right{position:relative;z-index:1}
@@ -94,8 +99,12 @@
         <a href="https://github.com/wanikua" target="_blank" aria-label="GitHub">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
         </a>
-        <a href="https://www.xiaohongshu.com/user/profile/5e6a123100000000010029c7" target="_blank" aria-label="小红书">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="https://www.xiaohongshu.com/user/profile/5a169df34eacab2bc9a7a22d" target="_blank" aria-label="小红书">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3z"/><path d="M14 14h3v3h-3zM20 14v7h-3M17 21h3"/></svg>
+        </a>
+        <a href="#" aria-label="微信公众号：菠言菠语" title="微信公众号：菠言菠语" onclick="navigator.clipboard.writeText('菠言菠语').then(()=>{this.dataset.copied='true';this.querySelector('.wechat-tip').textContent='已复制！微信搜索「菠言菠语」';setTimeout(()=>{this.querySelector('.wechat-tip').textContent='公众号：菠言菠语（点击复制）';this.dataset.copied='';},2000)});return false;" class="wechat-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="currentColor" width="24" height="24"><path d="M690.1 377.4c5.9 0 11.8.2 17.6.5-24.4-128.7-158.3-227.1-313.4-227.1C209 150.8 56.2 281.2 56.2 444c0 86.5 46.7 165.8 126.6 216.8l-31.5 95.4 111.5-56.3c40 10.7 72.4 16.1 111.5 16.1 5.5 0 11-.2 16.4-.5-3.4-12.2-5.3-24.8-5.3-37.9 0-152.8 133.5-300.2 304.7-300.2zM480.3 310.5c21.3 0 35.5 14.2 35.5 35.5s-14.2 35.5-35.5 35.5c-21.3 0-42.7-14.2-42.7-35.5s21.4-35.5 42.7-35.5zm-206.1 71c-21.3 0-42.7-14.2-42.7-35.5s21.3-35.5 42.7-35.5c21.3 0 35.5 14.2 35.5 35.5s-14.2 35.5-35.5 35.5zm606.7 296c0-137.7-131.4-249.5-277.7-249.5-152.8 0-284.2 111.8-284.2 249.5s131.4 249.5 284.2 249.5c33.4 0 66.4-6.4 99.4-16.1l86.8 48.1-24.4-80.4c66.4-48.1 115.9-120.4 115.9-201.1zm-369.3-35.5c-14.2 0-28.4-14.2-28.4-28.4s14.2-28.4 28.4-28.4 35.5 14.2 35.5 28.4-21.3 28.4-35.5 28.4zm198.4 0c-14.2 0-28.4-14.2-28.4-28.4s14.2-28.4 28.4-28.4c21.3 0 35.5 14.2 35.5 28.4s-14.2 28.4-35.5 28.4z"/></svg>
+          <span class="wechat-tip">公众号：菠言菠语（点击复制）</span>
         </a>
       </div>
     </div>
