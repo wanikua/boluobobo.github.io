@@ -8,7 +8,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍍</text></svg>">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    :root{--bg:#ffffff;--text:#64748b;--heading:#1e293b;--accent:#0891b2;--accent-dim:#0891b2;--card:#f8fafc;--border:#e2e8f0;--hover-bg:rgba(8,145,178,0.1)}
+    :root{--bg:#0f0f23;--text:#8892b0;--heading:#ccd6f6;--accent:#64ffda;--accent-dim:#64ffda;--card:#1a1a2e;--border:#233554;--hover-bg:rgba(100,255,218,0.1)}
     html{scroll-behavior:smooth;scroll-padding-top:100px}
     body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16px}
     a{color:var(--heading);text-decoration:none;transition:color .2s}
@@ -78,7 +78,7 @@
     .wechat-link:hover .wechat-tip{display:block}
 
     /* Cursor glow effect */
-    .glow{position:fixed;width:600px;height:600px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(8,145,178,0.08) 0%,transparent 70%);z-index:0;transition:transform .15s ease-out}
+    .glow{position:fixed;width:600px;height:600px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(100,255,218,0.08) 0%,transparent 70%);z-index:0;transition:transform .15s ease-out}
     .layout,.left,.right{position:relative;z-index:1}
   </style>
 </head>
